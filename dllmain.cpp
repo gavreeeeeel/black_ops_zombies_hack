@@ -22,7 +22,7 @@ void hack( )
 	ctx.m_hooking.finish( );
 }
 
-bool __stdcall DllMain( HINSTANCE instance, ulong_t reason, void* reserved )
+int __stdcall DllMain( HINSTANCE instance, ulong_t reason, void* reserved )
 {
 	if ( reason == DLL_PROCESS_ATTACH )
 	{
@@ -50,8 +50,8 @@ bool __stdcall DllMain( HINSTANCE instance, ulong_t reason, void* reserved )
 
 		CreateThread( 0, 0, LPTHREAD_START_ROUTINE( hack ), 0, 0, 0 );
 
-		return true;
+		return 1;
 	}
 
-	return false;
+	return 0;
 }
